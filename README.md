@@ -1,31 +1,43 @@
 # claude
 
-Claude Code のグローバル設定とプロジェクト別テンプレートを管理するリポジトリ。
+Claude Code のグローバル設定、プロジェクト別テンプレート、Skillを管理するリポジトリ。
 
 ## セットアップ
 
 ### グローバル CLAUDE.md
 
+`~/.claude/CLAUDE.md` にシンボリックリンクを貼る:
+
 ```bash
 ln -s /path/to/this/repo/CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
-シンボリックリンクを貼ることで、このリポジトリの CLAUDE.md がすべての Claude Code セッションで読み込まれる。
+### グローバル settings.json
+
+`~/.claude/settings.json` はマシン固有データ（タイムスタンプ等）を含むため、シンボリックリンクではなく手動で管理する。このリポジトリの `settings.json` はバックアップ・リファレンス用。
+
+新しいマシンをセットアップする際:
+```bash
+cp /path/to/this/repo/settings.json ~/.claude/settings.json
+```
 
 ### プロジェクト別テンプレート
+
+プロジェクトの CLAUDE.md にテンプレートへのシンボリックリンクを貼る:
 
 ```bash
 ln -s /path/to/this/repo/templates/python.md /path/to/project/CLAUDE.md
 ```
 
-プロジェクトの CLAUDE.md にテンプレートへのシンボリックリンクを貼る。プロジェクト固有のルールが必要な場合は、シンボリックリンクではなく実ファイルとして作成する。
+プロジェクト固有のルールが必要な場合は、シンボリックリンクではなく実ファイルとして作成する。
 
 ## ファイル構成
 
 ```
-CLAUDE.md       - グローバル設定（英語）
-CLAUDE.ja.md    - グローバル設定（日本語訳・参照用）
+CLAUDE.md       - グローバル設定（~/.claude/CLAUDE.md にシンボリックリンク）
+settings.json   - グローバル設定のバックアップ（手動コピー用）
 templates/      - プロジェクト別テンプレート（今後追加）
+skills/         - 汎用Skill（今後追加）
 ```
 
 ## 読み込み順序

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "alwaysThinkingEnabled": true,
+  "permissions": {
+    "allow": [
+      "Bash(gh issue *)",
+      "Bash(gh project *)",
+      "Bash(gh api *)",
+      "Bash(gh api graphql *)",
+      "Bash(gh label *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git status *)",
+      "Read",
+      "Edit"
+    ],
+    "ask": [
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)"
+    ]
+  }
+}
