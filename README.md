@@ -61,6 +61,29 @@ echo '.claude/skills/humanize/' >> /path/to/project/.git/info/exclude
 - 書式: `.gitignore` と同じ（パターン 1 行 1 件）
 - 用途: 個人用スキル、ローカル設定ファイル、テストデータなど
 
+## Hooks が必要なスキル
+
+以下のスキルはセッション開始時のhookが必要。`setup.sh` が `.env.issue-index` を検出すれば自動設定する。
+
+| スキル | hook | 条件 |
+|--------|------|------|
+| issue-index | セッション開始時にsync.sh実行 | `.env.issue-index` がプロジェクトルートにある |
+
+手動設定する場合は `.claude/settings.json` に以下を追加:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [{
+      "hooks": [{
+        "type": "command",
+        "command": "bash /path/to/claude/skills/issue-index/sync.sh ."
+      }]
+    }]
+  }
+}
+```
+
 ## 設計思想
 
 - **CLAUDE.md** にはセッション開始時に必要な情報だけ置く（ユーザー情報、行動原則）

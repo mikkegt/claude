@@ -1,45 +1,45 @@
 ---
 name: issue-index
-description: Issueインデックスの同期・参照。gh APIを毎回叩く代わりにローカルキャッシュを使ってトークンを節約する。
-argument-hint: <sync|status>
+description: Issue一覧が必要な場面で、gh APIの代わりにローカルキャッシュ(.issue-index.json)を参照する。トークン節約のため、gh issue listを直接叩かない。
 ---
 
 # Issue Index
 
-ローカルの `.issue-index.json` を管理するスキル。
+Issue一覧が必要なとき、`gh issue list` の代わりにローカルの `.issue-index.json` を `Read` する。
 
-## 引数
+## いつ使うか
 
-- `sync` — インデックスを最新に更新する
-- `status` または引数なし — インデックスの状態（最終更新日時、件数）を表示
+他のSkill（read-article等）や朝ルーティンでIssue一覧が必要になったとき、自動的にこのスキルの方針に従う。
 
 ## 手順
 
-### sync の場合
-
-1. プロジェクトルートの `.env.issue-index` を確認する。なければエラーを表示して終了
-2. 以下のコマンドを実行:
+1. `.issue-index.json` を `Read` する
+2. ファイルが存在しない場合、sync.sh を実行して作成する:
    ```
    bash ~/workspace/github.com/mikkegt/claude/skills/issue-index/sync.sh .
    ```
-3. 完了メッセージを表示
+3. `updated_at` が24時間以上前の場合も、同様にsync.shを実行してから読む
 
-### status の場合（デフォルト）
+## フォーマット
 
-1. `.issue-index.json` を `Read` する。なければ「未作成。`/issue-index sync` で作成してください」と表示
-2. `updated_at` と Issue 件数を表示
-3. 最終更新から24時間以上経過していたら、sync を提案
-
-## 他のSkillからの利用方法
-
-Issue一覧が必要な場合、`gh issue list` の代わりに `.issue-index.json` を `Read` する。
-
+```json
+{
+  "updated_at": "2026-04-05T12:00:00Z",
+  "repo": "mikkegt/Jarvis",
+  "issues": [
+    {
+      "number": 83,
+      "title": "PTA静的サイトキットを構築する",
+      "labels": ["self", "someday"],
+      "state": "OPEN",
+      "status": "Todo"
+    }
+  ]
+}
 ```
-# 変更前
-gh issue list --state open
 
-# 変更後
-Read .issue-index.json
-```
+## 注意
 
-インデックスが古い（24時間以上）場合は、先に sync を実行してから読む。
+- `gh issue list` を直接叩かない。必ずインデックスを経由する
+- インデックスはセッション開始時にhookで自動更新される
+- 最新のIssueが反映されていない可能性がある場合のみ、手動でsync.shを実行する

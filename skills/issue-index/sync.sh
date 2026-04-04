@@ -11,8 +11,7 @@ PROJECT_DIR="${1:-.}"
 ENV_FILE="$PROJECT_DIR/.env.issue-index"
 
 if [ ! -f "$ENV_FILE" ]; then
-  echo "Error: $ENV_FILE not found" >&2
-  exit 1
+  exit 0
 fi
 
 # shellcheck source=/dev/null

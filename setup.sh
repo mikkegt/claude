@@ -61,6 +61,37 @@ add_to_gitignore() {
   fi
 }
 
+setup_hooks() {
+  local settings_dir="${PROJECT_DIR}/.claude"
+  local settings_file="${settings_dir}/settings.json"
+  mkdir -p "$settings_dir"
+
+  # .env.issue-index があればhookを設定
+  if [ -f "${PROJECT_DIR}/.env.issue-index" ]; then
+    local sync_script="${SCRIPT_DIR}/skills/issue-index/sync.sh"
+    if [ -f "$settings_file" ]; then
+      # 既にhooksがあればスキップ
+      if jq -e '.hooks' "$settings_file" > /dev/null 2>&1; then
+        echo "  skip: hooks (already configured in .claude/settings.json)"
+      else
+        # 既存のsettings.jsonにhooksを追加
+        local tmp
+        tmp=$(mktemp)
+        jq --arg cmd "bash ${sync_script} ." \
+          '. + {hooks: {SessionStart: [{hooks: [{type: "command", command: $cmd}]}]}}' \
+          "$settings_file" > "$tmp" && mv "$tmp" "$settings_file"
+        echo "  update: .claude/settings.json (hooks added)"
+      fi
+    else
+      # settings.jsonを新規作成
+      jq -n --arg cmd "bash ${sync_script} ." \
+        '{hooks: {SessionStart: [{hooks: [{type: "command", command: $cmd}]}]}}' \
+        > "$settings_file"
+      echo "  create: .claude/settings.json (with hooks)"
+    fi
+  fi
+}
+
 setup_personal() {
   echo "=== Personal project setup ==="
   echo "Project: ${PROJECT_DIR}"
@@ -68,6 +99,7 @@ setup_personal() {
 
   setup_rules_dir
   link_rules "link"
+  setup_hooks
 
   echo ""
   echo "Done. rules/ はシンボリックリンク。プロジェクト固有ルールは .claude/rules/ に直接追加可能。"
