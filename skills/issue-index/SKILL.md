@@ -32,7 +32,8 @@ Issue一覧が必要なとき、`gh issue list` の代わりにローカルの `
       "title": "PTA静的サイトキットを構築する",
       "labels": ["self", "someday"],
       "state": "OPEN",
-      "status": "Todo"
+      "status": "Todo",
+      "deadline": "2026-04-10"
     }
   ]
 }

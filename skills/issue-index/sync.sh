@@ -33,6 +33,9 @@ QUERY='
           fieldValueByName(name: "Status") {
             ... on ProjectV2ItemFieldSingleSelectValue { name }
           }
+          fieldValueByName_deadline: fieldValueByName(name: "期限") {
+            ... on ProjectV2ItemFieldDateValue { date }
+          }
           content {
             ... on Issue {
               number
@@ -55,7 +58,8 @@ RAW=$(gh api graphql -f query="$QUERY" --jq '
       title: .content.title,
       state: .content.state,
       labels: [.content.labels.nodes[].name],
-      status: (.fieldValueByName.name // "Unknown")
+      status: (.fieldValueByName.name // "Unknown"),
+      deadline: (.fieldValueByName_deadline.date // null)
     })
   | sort_by(.number)
 ')
