@@ -22,7 +22,7 @@ argument-hint: <記事テキストまたはURL>
    - グローバル `CLAUDE.md` やプロジェクト `CLAUDE.md`
    - `MEMORY.md` とメモリファイル
    - `plans/` 配下のプラン（あれば）
-   - 関連しそうなオープンIssue（`gh issue list`）
+   - 関連しそうなオープンIssue（`.issue-index.json` を `Read`。ファイルがなければ `bash ~/workspace/github.com/mikkegt/claude/skills/issue-index/sync.sh .` で生成）
 3. 記事の内容を以下の3カテゴリに仕訳して報告する
 
 ## 出力フォーマット
