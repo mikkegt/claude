@@ -37,6 +37,30 @@ cd /path/to/your/project
 /path/to/this/repo/setup.sh team
 ```
 
+## Skills の配布方法
+
+### シンボリックリンクで配布する
+
+このリポジトリの `skills/` にオリジナルを管理し、各プロジェクトからシンボリックリンクを貼る。
+
+```bash
+# シンボリックリンク作成
+ln -s /path/to/this/repo/skills/humanize /path/to/project/.claude/skills/humanize
+
+# .git/info/exclude に追記（プロジェクト側）
+echo '.claude/skills/humanize/' >> /path/to/project/.git/info/exclude
+```
+
+**注意:** シンボリックリンクを貼った直後にスキル一覧に反映されないことがある（2026-04 確認）。見えない場合は少し時間をおくか、新しいセッションで試す。
+
+### `.git/info/exclude` とは
+
+`.gitignore` と同じ書式で、ローカル限定の git 除外設定。`.gitignore` と違ってリポジトリにコミットされないので、個人用ファイルの除外に使える。
+
+- 場所: `<プロジェクト>/.git/info/exclude`
+- 書式: `.gitignore` と同じ（パターン 1 行 1 件）
+- 用途: 個人用スキル、ローカル設定ファイル、テストデータなど
+
 ## 設計思想
 
 - **CLAUDE.md** にはセッション開始時に必要な情報だけ置く（ユーザー情報、行動原則）
