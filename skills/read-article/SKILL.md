@@ -58,5 +58,11 @@ argument-hint: <記事テキストまたはURL>
 - 忖度しない。既にやっていることは「既にやっている」と言い切る
 - バズ記事の煽りに乗らない。冷静に判定する
 - 「すごい」「参考になる」等の感想は不要。事実ベースで仕訳する
-- 保存が必要な場合は `content/clippings/YYYYMMDD-{slug}.md` への保存を提案する（外部記事は必ず `clippings/` 配下に保存し、自分の記事と混ぜない）
-- 保存時は frontmatter に `source` / `author` / `published` / `saved` / `type: clipping` を入れる
+- 仕訳した記事は `content/clippings/INDEX.md` の表に1行追加する（デフォルトstatus: `read`）
+- **本文は基本的に保存しない**。INDEXに出典リンクとメタ情報のみ記録する
+- 本文を保存する条件は以下のいずれか:
+  - X投稿・スレッドなど消えやすいソース
+  - ユーザーが明示的に「全文残して」と指示した
+  - その場合 `content/clippings/archive/YYYYMMDD-{slug}.md` に保存し、frontmatter（`source` / `author` / `published` / `saved` / `type: clipping`）必須。INDEX.mdの出典欄に `／ [archive](archive/...)` リンクを追加
+- 記事内容が実装/採用されたらINDEXのstatusを `implemented` に更新し、関連欄に成果物リンクを追加
+- 詳細な運用ルールは `content/clippings/INDEX.md` の「運用ルール」セクション参照
