@@ -58,4 +58,5 @@ argument-hint: <記事テキストまたはURL>
 - 忖度しない。既にやっていることは「既にやっている」と言い切る
 - バズ記事の煽りに乗らない。冷静に判定する
 - 「すごい」「参考になる」等の感想は不要。事実ベースで仕訳する
-- 保存が必要な場合は `content/YYYYMMDD-{slug}.md` への保存を提案する
+- 保存が必要な場合は `content/clippings/YYYYMMDD-{slug}.md` への保存を提案する（外部記事は必ず `clippings/` 配下に保存し、自分の記事と混ぜない）
+- 保存時は frontmatter に `source` / `author` / `published` / `saved` / `type: clipping` を入れる
