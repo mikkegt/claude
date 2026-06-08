@@ -15,3 +15,4 @@ paths:
 - MAY 読み取り専用操作（`git status`, `git diff`, `git log`）は自由に実行してよい
 - SHOULD 意味のある変更ごとにコミットする
 - SHOULD フィーチャーブランチを作成してPR/MRを出す
+- MUST 個人用ローカルファイル（`CLAUDE.local.md` 等）を git 管理外にする場合、リポジトリの `.gitignore`（チーム共有）ではなく `.git/info/exclude`（ローカル限定・コミットされない）に追加する
