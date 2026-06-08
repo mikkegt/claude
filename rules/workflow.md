@@ -11,7 +11,7 @@ paths:
 2. MUST スコープが明確になったらGitHub Issueを作成する
 3. MUST リポジトリの `plans/` ディレクトリにプランファイルを作成する
 4. MUST プランに基づいて実装する
-5. MUST PR/MRの説明に「User Prompt」セクションとしてユーザーの元の依頼を含める
+5. MUST PR/MRの説明に「背景」セクション（なぜこの変更が必要か）を含める。ユーザーの生のプロンプトをそのまま転記しない。Claude Code の署名（🤖 Generated with Claude Code）は含めない
 
 ## ドキュメントのメンテナンス
 
