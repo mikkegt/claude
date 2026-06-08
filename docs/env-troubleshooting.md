@@ -53,6 +53,16 @@ add_executable(myproj_ide_only ${SOURCES})
 
 プロジェクトルートに置く。Settings → Editor → Code Style → C/C++ で「設定は ClangFormat に上書きされる可能性があります」と出ていれば認識されている。
 
+### `.clang-format` が認識されない場合
+
+Settings → Editor → Code Style → C/C++ の **整形エンジン** が「CLion フォーマッター」になっていると、`.clang-format` の一部設定しか流用されず、アクセス識別子インデント等が期待通りにならない。
+
+対処:
+
+1. 整形エンジンを「**ClangFormat**」のラジオボタンに切り替える
+2. 「組み込みの clang-format ではなく外部の clang-format を使用する」は **チェックを外す**（バンドルで十分）。なお、このパス欄は clang-format **実行ファイル** を指定する場所で、`.clang-format` 設定ファイル自体を指定しても動かない
+3. Apply 後、エディタ上の既存コードは自動再整形されないので **⌥⌘L (Reformat Code)** で手動整形する
+
 ---
 
 ## GoLand (Go) 固有
