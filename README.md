@@ -10,10 +10,8 @@ rules/          - 開発ルール（コーディングファイルに触れた�
   git.md        - Git操作ルール
   coding.md     - コーディングスタイル・デバッグ・テスト
   workflow.md   - バグ修正/機能要望ワークフロー・ドキュメントメンテ
-templates/      - ドキュメントテンプレ（個人レポート整理用）
 settings.json   - グローバル設定のバックアップ（手動コピー用）
 skills/         - 汎用Skill
-setup.sh        - プロジェクト別セットアップスクリプト
 ```
 
 ## グローバルセットアップ
@@ -24,18 +22,6 @@ ln -s /path/to/this/repo/CLAUDE.md ~/.claude/CLAUDE.md
 
 # rules/ （グローバルに効かせる場合）
 ln -s /path/to/this/repo/rules ~/.claude/rules
-```
-
-## プロジェクト別セットアップ
-
-```bash
-cd /path/to/your/project
-
-# 個人プロジェクト: rules/ をシンボリックリンク
-/path/to/this/repo/setup.sh personal
-
-# チームプロジェクト: CLAUDE.local.md + rules/ をコピー、.gitignore に追記
-/path/to/this/repo/setup.sh team
 ```
 
 ## Skills 一覧
