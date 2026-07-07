@@ -45,7 +45,6 @@ cd /path/to/your/project
 | `humanize` | 生成文章を人間っぽい表現に直す |
 | `issue-index` | Issue一覧をローカルキャッシュしてトークン節約 |
 | `note-audio` | 学習ノートを物語調ナレーションに整形し Gemini TTS (Kore) で音声化 |
-| `read-article` | 記事を読んで現状と照合し「新しい情報 / 既にやっている / 関連Issue」に仕訳 |
 | `review-code` | コード変更を6軸でレビュー（PR・ローカルdiff・ファイル指定対応） |
 
 ## Skills の配布方法
