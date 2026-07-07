@@ -10,7 +10,6 @@ rules/          - 開発ルール（コーディングファイルに触れた�
   git.md        - Git操作ルール
   coding.md     - コーディングスタイル・デバッグ・テスト
   workflow.md   - バグ修正/機能要望ワークフロー・ドキュメントメンテ
-settings.json   - グローバル設定のバックアップ（手動コピー用）
 skills/         - 汎用Skill
 ```
 
