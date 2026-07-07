@@ -43,7 +43,6 @@ cd /path/to/your/project
 | スキル | 用途 |
 |--------|------|
 | `humanize` | 生成文章を人間っぽい表現に直す |
-| `issue-index` | Issue一覧をローカルキャッシュしてトークン節約 |
 | `note-audio` | 学習ノートを物語調ナレーションに整形し Gemini TTS (Kore) で音声化 |
 | `review-code` | コード変更を6軸でレビュー（PR・ローカルdiff・ファイル指定対応） |
 
@@ -70,29 +69,6 @@ echo '.claude/skills/humanize/' >> /path/to/project/.git/info/exclude
 - 場所: `<プロジェクト>/.git/info/exclude`
 - 書式: `.gitignore` と同じ（パターン 1 行 1 件）
 - 用途: 個人用スキル、ローカル設定ファイル、テストデータなど
-
-## Hooks が必要なスキル
-
-以下のスキルはセッション開始時のhookが必要。`setup.sh` が `.env.issue-index` を検出すれば自動設定する。
-
-| スキル | hook | 条件 |
-|--------|------|------|
-| issue-index | セッション開始時にsync.sh実行 | `.env.issue-index` がプロジェクトルートにある |
-
-手動設定する場合は `.claude/settings.json` に以下を追加:
-
-```json
-{
-  "hooks": {
-    "SessionStart": [{
-      "hooks": [{
-        "type": "command",
-        "command": "bash /path/to/claude/skills/issue-index/sync.sh ."
-      }]
-    }]
-  }
-}
-```
 
 ## 設計思想
 
