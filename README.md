@@ -10,7 +10,6 @@ rules/          - 開発ルール（コーディングファイルに触れた�
   git.md        - Git操作ルール
   coding.md     - コーディングスタイル・デバッグ・テスト
   workflow.md   - バグ修正/機能要望ワークフロー・ドキュメントメンテ
-  docs.md       - 個人レポート整理ルール（命名規則・INDEX.md・archive 運用）
 templates/      - ドキュメントテンプレ（個人レポート整理用）
 settings.json   - グローバル設定のバックアップ（手動コピー用）
 skills/         - 汎用Skill
@@ -48,14 +47,6 @@ cd /path/to/your/project
 | `note-audio` | 学習ノートを物語調ナレーションに整形し Gemini TTS (Kore) で音声化 |
 | `read-article` | 記事を読んで現状と照合し「新しい情報 / 既にやっている / 関連Issue」に仕訳 |
 | `review-code` | コード変更を6軸でレビュー（PR・ローカルdiff・ファイル指定対応） |
-
-## Templates 一覧
-
-`.claude/<user>/docs/` などに個人レポートが溜まる場合に使うテンプレ。整理ルール本体は `rules/docs.md` を参照。
-
-| テンプレ | 用途 |
-|--------|------|
-| `INDEX-template.md` | 個人レポート用 INDEX (🎯 最初に読むファイル / トピック別索引 / カテゴリ別 / archive ガイド) |
 
 ## Skills の配布方法
 
