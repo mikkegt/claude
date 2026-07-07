@@ -43,7 +43,6 @@ cd /path/to/your/project
 | スキル | 用途 |
 |--------|------|
 | `humanize` | 生成文章を人間っぽい表現に直す |
-| `note-audio` | 学習ノートを物語調ナレーションに整形し Gemini TTS (Kore) で音声化 |
 | `review-code` | コード変更を6軸でレビュー（PR・ローカルdiff・ファイル指定対応） |
 
 ## Skills の配布方法
