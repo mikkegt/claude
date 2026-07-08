@@ -20,7 +20,8 @@
     ではなく、必要な変数だけ `VAR=x cmd` で前置するか、リポジトリに env ロード用
     ラッパーを置いて allowlist する
   - 実行ファイルを変数に入れて `"$VAR"` で起動しない。パスは直書きする
-    （例: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless …`）
+    （例: macOS なら `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless …`、
+    Ubuntu なら `/usr/bin/google-chrome --headless …`）
   - 波括弧の中に文字列クォートを置かない（`{"key":val}` は難読化と誤検知される）。
     普通の awk ワンライナー `awk '{print $2}'` は波括弧内にクォートが無いので問題ない
 - 作業ディレクトリが既にそのリポジトリなら、先頭の冗長な `cd /abs/path &&` を付けない
