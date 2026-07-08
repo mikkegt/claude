@@ -1,6 +1,6 @@
 # Git 操作ルール（共通）
 
-Mac / Ubuntu 両方で常時効くルール。OS 固有の追加ルールは `git.md`（Mac）と
+Mac / Ubuntu 両方で常時効くルール。OS 固有の追加ルールは `git-mac.md`（Mac）と
 `git-ubuntu.md`（Ubuntu）に分けてある。
 
 - MUST 変更前に `git branch` または `git status` で現在のブランチを確認する
