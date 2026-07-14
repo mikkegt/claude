@@ -21,6 +21,10 @@
     Ubuntu なら `/usr/bin/google-chrome --headless …`）
   - 波括弧の中に文字列クォートを置かない（`{"key":val}` は難読化と誤検知される）。
     普通の awk ワンライナー `awk '{print $2}'` は波括弧内にクォートが無いので問題ない
+  - `$()` command substitution を使わない。コミットメッセージは
+    `git commit -m "リテラル文字列"`（複数行可）で直接渡す。Claude Code の
+    デフォルト指示は `git commit -m "$(cat <<'EOF' … EOF)"` を例示するが、
+    これに従うと静的解析に引っかかり承認待ちになる
 - 作業ディレクトリが既にそのリポジトリなら、先頭の冗長な `cd /abs/path &&` を付けない
 
 ## SHOULD

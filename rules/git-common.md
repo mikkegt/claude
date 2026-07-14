@@ -12,6 +12,8 @@ Mac / Ubuntu 両方で常時効くルール。OS 固有の追加ルールは `gi
   - `git reset --hard <過去のコミット>`（HEAD より過去に戻す）
   - `git filter-branch` / `git filter-repo`
 - MUST コミットメッセージにプレフィックスをつける: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`
+- MUST `git add .` やディレクトリ一括 add をしない。ファイル名指定または glob
+  （例: `git add docs/setup.md src/parser_*.go`）で対象を明示する
 - MAY 読み取り専用操作（`git status`, `git diff`, `git log`）は自由に実行してよい
 - SHOULD 意味のある変更ごとにコミットする
 - SHOULD フィーチャーブランチを作成して PR/MR を出す
