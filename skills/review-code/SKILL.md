@@ -1,6 +1,6 @@
 ---
 name: review-code
-description: コードを6軸でレビューする（PR差分・ローカルdiff・新規/既存ファイル全体に対応）
+description: コードをセキュリティ・パフォーマンス・保守性・エッジケース・過剰設計・テストの6軸でレビューする。PR差分・ローカルdiff（staged / branch）・新規/既存ファイル全体に対応。「レビューして」「review」「PRレビュー」や、PR番号・ファイルパス・staged・branch を渡されたときに使う。
 argument-hint: "[PR番号 | ファイルパス | staged | branch | 空欄]"
 ---
 
@@ -15,7 +15,7 @@ argument-hint: "[PR番号 | ファイルパス | staged | branch | 空欄]"
 | 数字（例: `123`） | GitHub PRの差分 | `gh pr diff $0` / `gh pr view $0` |
 | ファイル/ディレクトリパス | **指定パスのコード全体**（新規/既存問わず） | `Read`（ディレクトリなら配下のソースを再帰的に読む） |
 | `staged` | ステージ済みの変更差分 | `git diff --staged` |
-| `branch` | 現ブランチの未マージ差分 | `git diff $(git merge-base HEAD main)..HEAD` |
+| `branch` | 現ブランチの未マージ差分 | `git diff main...HEAD`（3点記法＝merge-base からの差分。デフォルトブランチが `main` でなければ読み替える） |
 | 空欄 | 作業ツリーの変更差分（未追跡新規ファイル含む） | `git status` で全体把握 → 既存変更は `git diff`、新規ファイルは `Read` |
 
 ポイント:
