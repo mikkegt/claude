@@ -1,6 +1,6 @@
 # 開発ワークフロー（共通）
 
-Mac / Ubuntu 両方に効く共通ルール。OS 固有の厳しさ・緩さは `workflow-mac.md`
+Mac / Ubuntu 両方に適用される共通ルール。OS 固有の厳しさ・緩さは `workflow-mac.md`
 （Mac 厳格）と `workflow-ubuntu.md`（Ubuntu 緩め）に分けてある。
 
 ## PR 説明の作り方
