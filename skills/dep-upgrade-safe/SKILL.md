@@ -29,7 +29,7 @@ Research-first upgrade of specific packages, with migration and runtime verifica
    - `yarn format && yarn lint && yarn build` (+ `yarn typecheck` if defined)
    - Run tests
    - **Launch the dev server / drive the app** — vite optimizer and runtime
-     errors do not show at build time. Use /verify or the run skill.
+     errors do not show at build time. Use the `run` skill.
 7. **PR**: unique feature branch, and include the investigation results in
    the PR body (「この調査結果もいっしょに」): breaking changes found,
    affected/not-affected judgment, migration applied.
