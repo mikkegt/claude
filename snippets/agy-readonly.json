@@ -1,0 +1,5 @@
+{
+  "permissions": {
+    "allow": ["read_file(*)", "list_dir(*)", "grep_search(*)"]
+  }
+}
