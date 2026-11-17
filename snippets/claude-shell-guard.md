@@ -16,6 +16,30 @@ claude() {
 
 `~/.zshrc`（または `~/.bashrc`）に貼って、`source ~/.zshrc` で反映。
 
+## Codex と Antigravity CLI にも同じガードを付ける
+
+Codex（`codex`）と Antigravity CLI（`agy`）も、起動したディレクトリを作業対象にするので、同じ事故が起きる。関数名と `command` の後ろのコマンド名だけを替えて、同じ形で貼る（2026-11-17 に Mac の zsh で、`~` と `/` では断られ、プロジェクトのディレクトリでは起動できることを確かめた）。
+
+```zsh
+codex() {
+  if [ "$PWD" = "$HOME" ] || [ "$PWD" = "/" ]; then
+    echo "refusing to run codex in $PWD — cd into a project dir first (use 'command codex' to override)." >&2
+    return 1
+  fi
+  command codex "$@"
+}
+
+agy() {
+  if [ "$PWD" = "$HOME" ] || [ "$PWD" = "/" ]; then
+    echo "refusing to run agy in $PWD — cd into a project dir first (use 'command agy' to override)." >&2
+    return 1
+  fi
+  command agy "$@"
+}
+```
+
+逃げ道も同じで、`command codex` / `command agy` と打てば関数を通らない。
+
 ## 何をしているか
 
 - 関数名を `claude` にすることで、素の `claude` コマンドを覆う
