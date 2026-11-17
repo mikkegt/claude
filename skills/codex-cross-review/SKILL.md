@@ -40,6 +40,10 @@ codex exec --sandbox workspace-write \
    accessibility, i18n lockstep (if this repo has multi-locale dicts), tests coverage for the
    happy path + boundary cases, and consistency with the rest of the codebase.
 
+   Report code findings. Report prose (plan files, comments, the PR body) only when
+   believing it would lead someone to make a WRONG CHANGE; a count, a figure or a name
+   that is merely out of date is not a finding.
+
    At the END of your work, ALWAYS post ONE final top-level comment that starts with a
    verdict marker on its own line:
      - 'CODEX VERDICT: LGTM' if you have no outstanding concerns
@@ -75,6 +79,7 @@ Locate the verdict marker in the top-level comments. The line starting `CODEX VE
 3. **Side effects** — Will the suggested fix break callers? Violate a convention? Regress a test? Check before applying.
 4. **Gaps Codex missed** — Look at the diff yourself with fresh eyes. Codex's review is your starting point, not your ceiling.
 5. **Categorise**: MUST-FIX / VALID-NIT / FALSE-POSITIVE / DEFER-TO-FOLLOWUP.
+6. **Stale prose is not worth a round.** A plan file, comment or PR body that is merely behind the code (a count that no longer matches, a renamed helper, a figure from an earlier commit — counts are the recurring case) is DEFER: collect it and fix it once, after the code has stopped moving. Prose that would mislead the next reader into a wrong change is a code finding and stays MUST-FIX. See `rules/writing-docs.md` → *後から読み返される文章に、コミットのたびに変わる数字を書かない*.
 
 Apply MUST-FIX + VALID-NIT in this iteration. For FALSE-POSITIVE and DEFER cases, post a top-level reply explaining why you're not fixing them — Codex can then factor that into the next verdict.
 
